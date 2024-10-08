@@ -1,0 +1,26 @@
+{
+  "name": "vue2_ssr_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build:dev": "webpack"
+  },
+  "author": "Ys_OoO",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.7.16",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.7",
+    "@babel/preset-env": "^7.25.7",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "ts-loader": "^9.5.1",
+    "vue-loader": "^15.10.0",
+    "vue-style-loader": "^4.1.3"
+  }
+}
