@@ -9,6 +9,12 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name]-bundle.js",
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public')
+    },
+    port: 9000
+  },
   module: {
     rules: [
       {
@@ -36,8 +42,14 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, "./index.html"),
+      template: path.resolve(__dirname, "./public/index.html"),
     }),
     new VueLoaderPlugin(),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components')
+    }
+  }
 };
