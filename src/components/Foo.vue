@@ -19,7 +19,7 @@
 .box{
     background-color: #534d4d;
     span{
-        color:#fff;
+        color: #fff;
     }
 }
 </style>

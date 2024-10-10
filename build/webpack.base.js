@@ -1,16 +1,18 @@
 const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
-const config = {
-  entry: path.resolve(__dirname, "src/main.js"),
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  devtool: isProd ? false : 'source-map',
+  mode: isProd ? 'production' : 'development',
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "[name]-bundle.js",
   },
-  devServer: {
+  devServer: isProd ? false : {
     static: {
-      directory: path.join(__dirname, 'public')
+      directory: path.join(__dirname, '../public')
     },
     port: 9000
   },
@@ -40,26 +42,13 @@ const config = {
     ],
   },
   plugins: [
-    new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, "public/index.html"),
-    }),
     new VueLoaderPlugin(),
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@components': path.resolve(__dirname, 'src/components')
+      '@': path.resolve(__dirname, '../src'),
+      '@components': path.resolve(__dirname, '../src/components'),
+      'public': path.resolve(__dirname, '../public')
     }
   }
 };
-
-module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
-    config.devtool = 'source-map';
-    config.mode = "development";
-  } else {
-    config.mode = "production";
-  }
-
-  return config;
-}
