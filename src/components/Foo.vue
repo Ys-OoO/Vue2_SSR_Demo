@@ -1,6 +1,6 @@
 <template>
     <div @click="handleClick" class="box">
-        Foo
+        <span>Foo</span>
     </div>
 </template>
 
@@ -15,9 +15,11 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="sass">
 .box{
     background-color: #534d4d;
-    color: #fff;
+    span{
+        color:#fff;
+    }
 }
 </style>

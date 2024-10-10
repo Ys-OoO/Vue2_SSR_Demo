@@ -2,11 +2,10 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
-module.exports = {
-  entry: path.resolve(__dirname, "./src/main.js"),
-  mode: "development",
+const config = {
+  entry: path.resolve(__dirname, "src/main.js"),
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name]-bundle.js",
   },
   devServer: {
@@ -35,14 +34,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        use: ["vue-style-loader", "css-loader"],
+        test: /\.s[ac]ss$/,
+        use: ["vue-style-loader", "css-loader", 'sass-loader'],
       },
     ],
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, "./public/index.html"),
+      template: path.resolve(__dirname, "public/index.html"),
     }),
     new VueLoaderPlugin(),
   ],
@@ -53,3 +52,14 @@ module.exports = {
     }
   }
 };
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+    config.mode = "development";
+  } else {
+    config.mode = "production";
+  }
+
+  return config;
+}
