@@ -1,21 +1,24 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  devtool: isProd ? false : 'source-map',
-  mode: isProd ? 'production' : 'development',
+  devtool: isProd ? false : "source-map",
+  mode: isProd ? "production" : "development",
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "[name]-bundle.js",
+    publicPath: "/dist/",
   },
-  devServer: isProd ? false : {
-    static: {
-      directory: path.join(__dirname, '../public')
-    },
-    port: 9000
-  },
+  devServer: isProd
+    ? false
+    : {
+        static: {
+          directory: path.join(__dirname, "../public"),
+        },
+        port: 9000,
+      },
   module: {
     rules: [
       {
@@ -37,18 +40,16 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: ["vue-style-loader", "css-loader", 'sass-loader'],
+        use: ["vue-style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
-  plugins: [
-    new VueLoaderPlugin(),
-  ],
+  plugins: [new VueLoaderPlugin()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src'),
-      '@components': path.resolve(__dirname, '../src/components'),
-      'public': path.resolve(__dirname, '../public')
-    }
-  }
+      "@": path.resolve(__dirname, "../src"),
+      "@components": path.resolve(__dirname, "../src/components"),
+      public: path.resolve(__dirname, "../public"),
+    },
+  },
 };
