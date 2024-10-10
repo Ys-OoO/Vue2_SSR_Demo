@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently \"npm run build:dev\" \"nodemon server\"",
     "build": "rimraf dist && npm run build:client && npm run build:server",
-    "start":"node server",
+    "start": "node server",
     "build:dev": "rimraf dist && concurrently \"npm run build:client:dev\" \"npm run build:server:dev\"",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.js",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.js",
@@ -30,7 +30,6 @@
     "babel-loader": "^9.2.1",
     "concurrently": "^9.0.1",
     "css-loader": "^7.1.2",
-    "html-webpack-plugin": "^5.6.0",
     "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",
     "sass": "^1.79.4",
