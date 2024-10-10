@@ -21,6 +21,9 @@ export default {
         handleClick() {
             this.$store.commit("INCREMENT_COUNT");
         }
+    },
+    asyncData({store,route}){
+        return store.dispatch('fetchCount');
     }
 }
 </script>
