@@ -21,8 +21,13 @@ function render(req, res) {
         template
     })
 
-    // * renderToString方法会将bundle转换为HTML, 并嵌入template中
-    // * 此外，他会将centext传入并执行bundle导出的函数
+    /**
+     * * renderToString方法会将bundle转换为HTML, 并嵌入template中
+     * * 内部会先将centext传入并执行bundle导出的函数（entry-server.js），之后再根据其返回值执行后续流程：
+     *          * 挂载数据到window.__INITIAL_STATE__
+     *          * 将路由后的实例转换为 HTMLString
+     *          * 执行(err,html)=>{ ... }回调
+     */
     renderer.renderToString(context, (err, html) => {
         if (err) {
             if (err.url) {
