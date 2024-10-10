@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Bar from '@components/Bar.vue';
-import Foo from '@components/Foo.vue';
+import Count from '@components/Count.vue';
 
 Vue.use(Router);
 
@@ -10,12 +10,12 @@ export function createRouterFactory() {
         mode: 'history',
         fallback: false,
         scrollBehavior() {
-            return { y: 0 }
+            return { y: 0, behavior: 'smooth' }
         },
         routes: [
             { path: '/bar', component: Bar },
-            { path: '/foo', component: Foo },
-            { path: '/', redirect: '/foo' },
+            { path: '/count', component: Count },
+            { path: '/', redirect: '/count' },
         ]
     })
 }

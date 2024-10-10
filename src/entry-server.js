@@ -6,7 +6,7 @@ import { createAppFactory } from '@/app.js';
  */
 export default (context) => {
     return new Promise((resolev, reject) => {
-        let { app, router } = createAppFactory();
+        let { app, router, store } = createAppFactory();
         const url = context.url;
 
         // 访问的URL所对应的路由
