@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <Foo/>
+    <router-link to="/foo">Foo</router-link>
+    <router-link to="/bar">Bar</router-link>
+    <router-view class="view"></router-view>
   </div>
 </template>
 
 <script>
-import Foo from '@components/Foo.vue';
 export default {
   name: "App",
-  components:{
-    Foo
-  }
 };
 </script>
 

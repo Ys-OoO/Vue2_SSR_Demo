@@ -20,6 +20,9 @@ function render(req, res) {
     const renderer = createBundleRenderer(bundle, {
         template
     })
+
+    // * renderToString方法会将bundle转换为HTML, 并嵌入template中
+    // * 此外，他会将centext传入并执行bundle导出的函数
     renderer.renderToString(context, (err, html) => {
         if (err) {
             if (err.url) {

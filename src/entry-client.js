@@ -1,6 +1,8 @@
 // 客户端渲染入口
-import createAppFactory from '@/app.js';
+import { createAppFactory } from '@/app.js';
 
-let { app } = createAppFactory();
+let { app, router } = createAppFactory();
 
-app.$mount('#app');
+router.onReady(() => {
+    app.$mount('#app');
+});
