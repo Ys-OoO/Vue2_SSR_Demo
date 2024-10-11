@@ -1,7 +1,7 @@
 {
   "name": "vue2_ssr_demo",
   "version": "1.0.0",
-  "description": "Ys-OoO's Personal Site",
+  "description": "Ys-OoO's Vue2 SSR Demo",
   "scripts": {
     "dev": "concurrently \"npm run build:dev\" \"nodemon server\"",
     "build": "rimraf dist && npm run build:client && npm run build:server",
